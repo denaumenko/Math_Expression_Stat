@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">For last test</a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">For all time</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">For last days</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">For last month</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">For last year</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Collapse all</button>
+  <div>Buy, user. Logout.</div>
+  <form action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+          <input class="btn btn-danger" type="submit" value="Sign Out"/>
+  </form>
+</p>
+
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <div class="card card-body">
+            <table class="table table-bordered">
+                <h2>Last test</h2>
+                <thead>
+                <tr>
+                    <th scope="col">Number of questions</th>
+                    <th scope="col">Corect answers</th>
+                    <th scope="col">Incorect answers</th>
+                    <th scope="col">Percent</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{# count }}
+                        {{ . }}
+                    {{/ count }}</th>
+                    <td>{{# CorectAnswers }}
+                        {{ . }}
+                    {{/ CorectAnswers }}</td>
+                    <td>{{# IncorectAnswers }}
+                        {{ . }}
+                    {{/ IncorectAnswers }}</td>
+                    <td>{{# percent }}
+                        {{ . }}
+                    {{/ percent }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Start date - end date</th>
+                    <th scope="col">Max answer time</th>
+                    <th scope="col">Min answer time</th>
+                    <th scope="col">Avg answer time</th>
+                    <th scope="col">Duration per question-answer</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{# startdata }}
+                        {{ . }}
+                    {{/ startdata }} -  {{# enddata }}
+                        {{ . }}
+                    {{/ enddata }}</th>
+                    <td>{{# max }}
+                        {{ . }}
+                    {{/ max }}</td>
+                    <td>{{# min }}
+                        {{ . }}
+                    {{/ min }}</td>
+                    <td>{{# avg }}
+                        {{ . }}
+                    {{/ avg }}</td>
+                    <td>{{# durration_per_question}}
+                        {{ . }}
+                    {{/ durration_per_question }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        <table class="table table-bordered">
+            <h2>For all time</h2>
+            <thead>
+            <tr>
+                <th scope="col">Number of questions</th>
+                <th scope="col">Corect answers</th>
+                <th scope="col">Percent</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{# Questions }}
+                    {{ . }}
+                {{/ Questions }}</th>
+                <td>{{# TotalNumberCorect }}
+                    {{ . }}
+                {{/ TotalNumberCorect }}</td>
+
+                <td>{{# TotalPercent }}
+                    {{ . }}
+                {{/ TotalPercent }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+
+                <th scope="col">Max answer time</th>
+                <th scope="col">Min answer time</th>
+                <th scope="col">Avg answer time</th>
+                <th scope="col">Number of enters</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{# TotalMaxAllTime }}
+                    {{ . }}
+                {{/ TotalMaxAllTime }}</td>
+                <td>{{# TotalMinAllTime }}
+                    {{ . }}
+                {{/ TotalMinAllTime }}</td>
+                <td>{{# TotalAvgAllTime }}
+                    {{ . }}
+                {{/ TotalAvgAllTime }}</td>
+                <td>{{# TotalEnters }}
+                    {{ . }}
+                {{/ TotalEnters }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample3">
+      <div class="card card-body">
+        <table class="table table-bordered">
+            <h2>For last day</h2>
+            <thead>
+            <tr>
+                <th scope="col">Number of questions</th>
+                <th scope="col">Corect answers</th>
+                <th scope="col">Percent</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{# dayQuestions }}
+                    {{ . }}
+                {{/ dayQuestions }}</th>
+                <td>{{# dayNumberCorect }}
+                    {{ . }}
+                {{/ dayNumberCorect }}</td>
+
+                <td>{{# dayPercent }}
+                    {{ . }}
+                {{/ dayPercent }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+
+                <th scope="col">Max answer time</th>
+                <th scope="col">Min answer time</th>
+                <th scope="col">Avg answer time</th>
+                <th scope="col">Number of enters</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{# dayMaxAllTime }}
+                    {{ . }}
+                {{/ dayMaxAllTime }}</td>
+                <td>{{# dayMinAllTime }}
+                    {{ . }}
+                {{/ dayMinAllTime }}</td>
+                <td>{{# dayAvgAllTime }}
+                    {{ . }}
+                {{/ dayAvgAllTime }}</td>
+                <td>{{# dayEnters }}
+                    {{ . }}
+                {{/ dayEnters }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample4">
+      <div class="card card-body">
+        <table class="table table-bordered">
+            <h2>For last month</h2>
+            <thead>
+            <tr>
+                <th scope="col">Number of questions</th>
+                <th scope="col">Corect answers</th>
+                <th scope="col">Percent</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{# monthQuestions }}
+                    {{ . }}
+                {{/ monthQuestions }}</th>
+                <td>{{# monthNumberCorect }}
+                    {{ . }}
+                {{/ monthNumberCorect }}</td>
+
+                <td>{{# monthPercent }}
+                    {{ . }}
+                {{/ monthPercent }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+
+                <th scope="col">Max answer time</th>
+                <th scope="col">Min answer time</th>
+                <th scope="col">Avg answer time</th>
+                <th scope="col">Number of enters</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{# monthMaxAllTime }}
+                    {{ . }}
+                {{/ monthMaxAllTime }}</td>
+                <td>{{# monthMinAllTime }}
+                    {{ . }}
+                {{/ monthMinAllTime }}</td>
+                <td>{{# monthAvgAllTime }}
+                    {{ . }}
+                {{/ monthAvgAllTime }}</td>
+                <td>{{# monthEnters }}
+                    {{ . }}
+                {{/ monthEnters }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample5">
+      <div class="card card-body">
+        <table class="table table-bordered">
+            <h2>For last year</h2>
+            <thead>
+            <tr>
+                <th scope="col">Number of questions</th>
+                <th scope="col">Corect answers</th>
+                <th scope="col">Percent</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{# yearQuestions }}
+                    {{ . }}
+                {{/ yearQuestions }}</th>
+                <td>{{# yearNumberCorect }}
+                    {{ . }}
+                {{/ yearNumberCorect }}</td>
+
+                <td>{{# yearPercent }}
+                    {{ . }}
+                {{/ yearPercent }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+
+                <th scope="col">Max answer time</th>
+                <th scope="col">Min answer time</th>
+                <th scope="col">Avg answer time</th>
+                <th scope="col">Number of enters</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{# yearMaxAllTime }}
+                    {{ . }}
+                {{/ yearMaxAllTime }}</td>
+                <td>{{# yearMinAllTime }}
+                    {{ . }}
+                {{/ yearMinAllTime }}</td>
+                <td>{{# yearAvgAllTime }}
+                    {{ . }}
+                {{/ yearAvgAllTime }}</td>
+                <td>{{# yearEnters }}
+                    {{ . }}
+                {{/ yearEnters }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

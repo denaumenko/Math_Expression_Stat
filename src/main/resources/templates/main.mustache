@@ -1,0 +1,53 @@
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+
+
+
+
+    <div>
+        <form method="post" >
+            <h3>{{# expression }}
+                {{ . }}
+            {{/ expression }}</h3>
+
+        {{# expression }}
+            <input type="hidden" name="expression" value="{{ . }} "  />
+        {{/ expression }}
+        {{# solution }}
+            <input type="hidden" name="answer" value="{{ . }}"  />
+        {{/ solution }}
+            <input type="text" name="solution" >
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button class="btn btn-primary" type="submit">Reply</button>
+        </form>
+    </div>
+    <div>Count of question:</div>
+    {{# count }}
+        {{ . }}
+    {{/ count }}
+    <h2>* only integer division, for example 78/65 = 1, 78/90 = 0, 17 / 2 = 8</h2>
+
+    <div>
+        <form action="/endtesting" method="get">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input class="btn btn-danger" type="submit" value="Check reports"/>
+
+        </form>
+    </div>
+
+<!--    <div>Statistic for all time</div>-->
+<!--    {{#userStats}}-->
+<!--    <div>-->
+<!--        <i>{{expression}}</i>-->
+<!--        <i>{{answer}}</i>-->
+<!--        <span>{{accuracy}}</span>-->
+<!--        <i>{{solution}}</i>-->
+<!--    </div>-->
+<!--    {{/userStats}}-->
+
+
+</body>
+</html>
